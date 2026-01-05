@@ -1,0 +1,180 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Tiptap from "@/components/Tiptap";
+import Link from "next/link";
+import Image from "next/image";
+
+export default function NewPost() {
+    const router = useRouter();
+    const [title, setTitle] = useState("");
+    const [slug, setSlug] = useState("");
+    const [excerpt, setExcerpt] = useState("");
+    const [content, setContent] = useState("");
+    const [image, setImage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const generateSlug = (text: string) => {
+        return text
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)+/g, "");
+    };
+
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+        setTitle(val);
+        setSlug(generateSlug(val));
+    };
+
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files?.[0]) return;
+
+        setIsLoading(true);
+        const formData = new FormData();
+        formData.append("file", e.target.files[0]);
+
+        try {
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                body: formData,
+            });
+            const data = await res.json();
+            if (res.ok) {
+                setImage(data.url);
+            } else {
+                alert("Error subiendo imagen");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Error subiendo imagen");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleSubmit = async (published: boolean) => {
+        if (!title || !slug || !content) {
+            alert("Título, slug y contenido son requeridos");
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            const res = await fetch("/api/posts", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    title,
+                    slug,
+                    excerpt,
+                    content,
+                    image,
+                    published,
+                }),
+            });
+
+            if (res.ok) {
+                router.push("/admin/posts");
+            } else {
+                alert("Error al guardar el artículo");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Error al guardar");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+
+        <div>
+            <div className="flex justify-between items-center mb-8">
+                <h1 className="text-3xl font-bold">Nuevo Artículo</h1>
+                <div className="flex gap-4">
+                    <button
+                        onClick={() => handleSubmit(false)}
+                        disabled={isLoading}
+                        className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+                    >
+                        Guardar Borrador
+                    </button>
+                    <button
+                        onClick={() => handleSubmit(true)}
+                        disabled={isLoading}
+                        className="px-6 py-2 bg-[var(--accent-brown)] text-white rounded-lg hover:bg-black transition"
+                    >
+                        Publicar
+                    </button>
+                </div>
+            </div>
+
+            <div className="space-y-6">
+                {/* Title */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Título</label>
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={handleTitleChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--accent-brown)] outline-none"
+                        placeholder="Escribe el título aquí..."
+                    />
+                </div>
+
+                {/* Slug */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Slug (URL)</label>
+                    <input
+                        type="text"
+                        value={slug}
+                        onChange={(e) => setSlug(e.target.value)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-500"
+                    />
+                </div>
+
+                {/* Excerpt */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Resumen (Excerpt)</label>
+                    <textarea
+                        value={excerpt}
+                        onChange={(e) => setExcerpt(e.target.value)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--accent-brown)] outline-none h-24"
+                        placeholder="Breve descripción para la tarjeta del blog..."
+                    />
+                </div>
+
+                {/* Image Upload */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Imagen Principal</label>
+                    <div className="flex items-center gap-4">
+                        <input
+                            type="file"
+                            onChange={handleImageUpload}
+                            className="block w-full text-sm text-gray-500
+                            file:mr-4 file:py-2 file:px-4
+                            file:rounded-full file:border-0
+                            file:text-sm file:font-semibold
+                            file:bg-[var(--primary-beige)] file:text-[var(--text-dark)]
+                            hover:file:bg-[var(--accent-brown)] hover:file:text-white
+                            transition-all"
+                        />
+                        {image && (
+                            <div className="relative w-20 h-20 rounded-lg overflow-hidden border border-gray-200">
+                                <Image src={image} alt="Preview" fill className="object-cover" />
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Editor */}
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Contenido</label>
+                    <Tiptap content={content} onChange={setContent} />
+                </div>
+            </div>
+        </div>
+    );
+}
