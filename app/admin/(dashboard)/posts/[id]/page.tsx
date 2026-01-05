@@ -1,17 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import Tiptap from "@/components/Tiptap";
 import Image from "next/image";
 
 interface Props {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
 export default function EditPost({ params }: Props) {
+    const { id } = use(params);
     const router = useRouter();
     const [title, setTitle] = useState("");
     const [slug, setSlug] = useState("");
@@ -23,7 +24,7 @@ export default function EditPost({ params }: Props) {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const res = await fetch(`/api/posts/${params.id}`);
+                const res = await fetch(`/api/posts/${id}`);
                 if (!res.ok) {
                     alert("Error al cargar el artículo");
                     router.push("/admin/posts");
@@ -43,7 +44,7 @@ export default function EditPost({ params }: Props) {
         };
 
         fetchPost();
-    }, [params.id, router]);
+    }, [id, router]);
 
     const generateSlug = (text: string) => {
         return text
@@ -101,7 +102,7 @@ export default function EditPost({ params }: Props) {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    id: params.id, // Include ID just in case
+                    id: id, // Include ID just in case
                     title,
                     slug,
                     excerpt,
@@ -114,7 +115,7 @@ export default function EditPost({ params }: Props) {
             // Wait, I haven't implemented PUT in /api/posts/[id]/route.ts yet!
             // I need to add PUT to /api/posts/[id]/route.ts
 
-            const resPut = await fetch(`/api/posts/${params.id}`, {
+            const resPut = await fetch(`/api/posts/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
