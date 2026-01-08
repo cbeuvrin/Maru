@@ -7,68 +7,7 @@ export const metadata: Metadata = {
     description: "Descubre la filosofía de RIMAN, sus ingredientes naturales y las rutinas de skincare coreano para transformar tu piel.",
 };
 
-interface Product {
-    name: string;
-    image: string;
-}
-
-interface RoutineProps {
-    id: string;
-    title: string;
-    description: string;
-    forSkin: string;
-    products: Product[];
-}
-
-const RoutineSection = ({ title, description, forSkin, products, id }: RoutineProps) => (
-    <div id={id} className="py-24 border-b border-gray-100 last:border-0 scroll-mt-20">
-        <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center max-w-6xl mx-auto">
-                {/* Text Content */}
-                <div className="text-center max-w-3xl mx-auto mb-12">
-                    <span className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6 bg-[var(--primary-beige)] text-[var(--accent-brown)] bg-opacity-30">
-                        {forSkin}
-                    </span>
-                    <h2 className="font-serif text-3xl md:text-5xl mb-6">{title}</h2>
-                    <p className="text-xl text-gray-600 leading-relaxed font-light">
-                        {description}
-                    </p>
-                </div>
-
-                {/* Visuals - Product Carousel */}
-                <div className="w-full mb-12 relative">
-                    <div className="flex overflow-x-auto space-x-8 pb-8 justify-start md:justify-center snap-x hide-scrollbar px-4">
-                        {products.map((prod, idx) => (
-                            <div key={idx} className="flex-shrink-0 w-48 flex flex-col items-center snap-center group">
-                                {prod.image && (
-                                    <div className="relative w-full h-48 mb-6 transition-transform duration-500 group-hover:scale-105">
-                                        <Image
-                                            src={prod.image}
-                                            alt={prod.name}
-                                            fill
-                                            className="object-contain"
-                                        />
-                                    </div>
-                                )}
-                                <p className="text-center text-xs font-bold uppercase tracking-wide text-gray-800 leading-tight">
-                                    {prod.name}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <Link
-                    href="https://glowmaru.riman.com"
-                    target="_blank"
-                    className="inline-block bg-[var(--accent-brown)] text-white px-12 py-4 text-sm tracking-[0.2em] uppercase hover:bg-black transition-all duration-300 rounded-sm"
-                >
-                    Comprar esta Rutina
-                </Link>
-            </div>
-        </div>
-    </div>
-);
+import RoutineSection from "@/components/RoutineSection";
 
 export default function SkincarePage() {
     return (
