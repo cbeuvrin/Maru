@@ -15,7 +15,7 @@ export default function Footer() {
                 </div>
 
                 <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">
-                    Copyright © 2025 Maru CORDERO - Todos los derechos reservados.
+                    Copyright © 2026 Maru CORDERO - Todos los derechos reservados.
                 </p>
                 <p className="text-xs text-gray-400 uppercase tracking-widest">
                     Embajadora RIMAN

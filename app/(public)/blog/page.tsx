@@ -50,7 +50,7 @@ export default function BlogPage() {
                 />
                 <div className="absolute inset-0 bg-black/50"></div>
                 <div className="relative z-10 text-center text-white pt-20">
-                    <h1 className="font-dancing text-6xl md:text-7xl mb-4">
+                    <h1 className="font-dancing text-5xl md:text-7xl mb-4">
                         Blog & Q&A
                     </h1>
                 </div>
@@ -59,16 +59,25 @@ export default function BlogPage() {
             {/* Content Section */}
             <section className="container mx-auto px-4 py-20">
 
+                {/* Reflexiones Section */}
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                    <h2 className="font-dancing text-4xl md:text-5xl mb-8">Reflexiones de Maru</h2>
+                    <p className="text-xl text-gray-700 leading-relaxed font-light">
+                        Este espacio está diseñado para compartir ideas, aprendizajes y experiencias que han marcado mi camino.
+                        Aquí encontrarás contenido pensado para inspirarte, ayudarte a crecer y acompañarte en tu proceso personal, profesional y emocional.
+                    </p>
+                </div>
+
                 {/* Blog Grid Section - Moved to top */}
                 <div className="max-w-7xl mx-auto mb-32">
-                    <h2 className="font-dancing text-5xl text-center mb-12">Mi Blog</h2>
+                    <h2 className="font-dancing text-4xl md:text-5xl text-center mb-12">Mi Blog</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {/* Post 1 */}
+                        {/* Post 1 - ICD de Riman uses post-2 image now */}
                         <div className="group bg-white rounded-lg overflow-hidden flex flex-col h-full hover:shadow-xl transition-shadow duration-300">
                             <Link href="/blog/icd-de-riman" className="block relative h-64 overflow-hidden">
                                 <Image
-                                    src="/banner3.png"
+                                    src="/blog/post-2.jpg"
                                     alt="ICD de Riman"
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -87,11 +96,11 @@ export default function BlogPage() {
                             </div>
                         </div>
 
-                        {/* Post 2 */}
+                        {/* Post 2 - K-Beauty uses post-1 image now */}
                         <div className="group bg-white rounded-lg overflow-hidden flex flex-col h-full hover:shadow-xl transition-shadow duration-300">
                             <Link href="/blog/k-beauty-mujeres-reales" className="block relative h-64 overflow-hidden">
                                 <Image
-                                    src="/banner3.png"
+                                    src="/blog/post-1.jpg"
                                     alt="K-Beauty"
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -114,7 +123,7 @@ export default function BlogPage() {
                         <div className="group bg-white rounded-lg overflow-hidden flex flex-col h-full hover:shadow-xl transition-shadow duration-300">
                             <Link href="/blog/ingresos-desde-casa" className="block relative h-64 overflow-hidden">
                                 <Image
-                                    src="/banner3.png"
+                                    src="/blog/post-3.jpg"
                                     alt="Ingresos desde casa"
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -137,7 +146,7 @@ export default function BlogPage() {
                         <div className="group bg-white rounded-lg overflow-hidden flex flex-col h-full hover:shadow-xl transition-shadow duration-300">
                             <Link href="/blog/vida-con-proposito" className="block relative h-64 overflow-hidden">
                                 <Image
-                                    src="/banner3.png"
+                                    src="/blog/post-4.jpg"
                                     alt="Vida con propósito"
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -159,18 +168,9 @@ export default function BlogPage() {
                     </div>
                 </div>
 
-                {/* Reflections Section */}
-                <div className="max-w-4xl mx-auto text-center mb-20">
-                    <h2 className="font-dancing text-5xl mb-8">Reflexiones de Maru</h2>
-                    <p className="text-xl text-gray-700 leading-relaxed">
-                        Este espacio está diseñado para compartir ideas, aprendizajes y experiencias que han marcado mi camino.
-                        Aquí encontrarás contenido pensado para inspirarte, ayudarte a crecer y acompañarte en tu proceso personal, profesional y emocional.
-                    </p>
-                </div>
-
                 {/* FAQ Section */}
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="font-dancing text-5xl text-center mb-12">Preguntas frecuentes</h2>
+                    <h2 className="font-dancing text-4xl md:text-5xl text-center mb-12">Preguntas frecuentes</h2>
 
                     <FaqAccordion faqs={faqs} />
                 </div>

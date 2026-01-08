@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function AboutMe() {
     return (
         <section className="container mx-auto px-4 py-20">
-            <h2 className="font-dancing text-5xl text-center mb-16">
+            <h2 className="font-dancing text-4xl md:text-5xl text-center mb-16">
                 Sobre Mí
             </h2>
 

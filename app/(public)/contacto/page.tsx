@@ -12,7 +12,7 @@ export default function ContactPage() {
         <div className="bg-white">
             <section className="relative w-full h-[50vh] min-h-[400px] flex items-center justify-center shadow-xl">
                 <Image
-                    src="/banner3.png"
+                    src="/contacto/fondo-comunicate-2.png"
                     alt="Contacto Background"
                     fill
                     className="object-cover object-left"
@@ -21,7 +21,7 @@ export default function ContactPage() {
                 />
                 <div className="absolute inset-0 bg-black/50"></div>
                 <div className="relative z-10 text-center text-white pt-20">
-                    <h1 className="font-dancing text-6xl md:text-7xl mb-4">
+                    <h1 className="font-dancing text-4xl md:text-7xl mb-4">
                         Comunícate conmigo
                     </h1>
                 </div>

@@ -2,7 +2,7 @@ export default function Philosophy() {
     return (
         <section className="bg-white py-20">
             <div className="container mx-auto px-4 max-w-4xl text-center">
-                <h2 className="font-dancing text-5xl mb-8">
+                <h2 className="font-dancing text-4xl md:text-5xl mb-8">
                     Mi filosofía
                 </h2>
                 <p className="text-lg leading-relaxed text-gray-700">

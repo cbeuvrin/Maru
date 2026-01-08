@@ -14,15 +14,18 @@ const CAROUSEL_IMAGES = [
 export default function LifeInMotion() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
     const scroll = (direction: "left" | "right") => {
         if (scrollRef.current) {
             const { current } = scrollRef;
-            const scrollAmount = current.clientWidth * 0.8; // Scroll 80% of width
+            // Calculate item width + gap (gap-6 = 24px)
+            const itemWidth = (current.children[0] as HTMLElement).clientWidth + 24;
+
             if (direction === "left") {
-                current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+                current.scrollBy({ left: -itemWidth, behavior: "smooth" });
             } else {
-                current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+                current.scrollBy({ left: itemWidth, behavior: "smooth" });
             }
         }
     };
@@ -36,18 +39,41 @@ export default function LifeInMotion() {
                 // This is a rough approximation for dots, exact intersection observer is better but this is simple enough for now
             }
         };
-        scrollRef.current?.addEventListener("scroll", handleScroll);
-        return () => scrollRef.current?.removeEventListener("scroll", handleScroll);
+
+        const currentScrollRef = scrollRef.current; // Store ref in a variable for cleanup
+        currentScrollRef?.addEventListener("scroll", handleScroll);
+        return () => currentScrollRef?.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Auto-scroll functionality
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!isPaused && scrollRef.current) {
+                const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+                // Check if we've reached the end (with a small buffer)
+                if (scrollLeft + clientWidth >= scrollWidth - 10) {
+                    scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                    scroll("right");
+                }
+            }
+        }, 4500); // Scroll every 4.5 seconds
+
+        return () => clearInterval(interval);
+    }, [isPaused]);
 
     return (
         <section className="bg-[var(--primary-beige)] py-20 text-center overflow-hidden">
             <div className="container mx-auto px-4">
-                <h2 className="font-dancing text-5xl mb-8">
+                <h2 className="font-dancing text-4xl md:text-5xl mb-8">
                     Mi vida en movimiento
                 </h2>
 
-                <div className="relative group max-w-7xl mx-auto">
+                <div
+                    className="relative group max-w-7xl mx-auto"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
                     {/* Carousel Container */}
                     <div
                         ref={scrollRef}
