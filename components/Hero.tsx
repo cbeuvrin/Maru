@@ -31,8 +31,16 @@ export default function Hero() {
                     </div>
 
                     <div className="mb-12">
-                        <p className="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-2 [text-shadow:_0_2px_4px_rgba(0,0,0,0.8)]">Embajadora</p>
-                        <p className="font-serif text-3xl md:text-5xl tracking-widest font-bold text-[var(--primary-beige)] [text-shadow:_0_2px_4px_rgba(0,0,0,0.8)]">RIMAN</p>
+                        <p className="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-4 [text-shadow:_0_2px_4px_rgba(0,0,0,0.8)]">Embajadora</p>
+                        <div className="relative">
+                            <Image
+                                src="/images/riman-logo.png"
+                                alt="RIMAN"
+                                width={1024}
+                                height={458}
+                                className="h-8 md:h-14 w-auto"
+                            />
+                        </div>
                     </div>
 
                     <Link

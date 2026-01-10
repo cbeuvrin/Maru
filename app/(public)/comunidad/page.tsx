@@ -33,7 +33,7 @@ export default function ComunidadPage() {
             {/* Intro Section */}
             <section className="container mx-auto px-4 py-20">
                 <div className="max-w-4xl mx-auto text-center">
-                    <p className="text-xl text-gray-700 leading-relaxed font-light italic mb-8">
+                    <p className="text-2xl text-gray-700 leading-relaxed font-light italic mb-8">
                         "Creo profundamente en el poder de las mujeres cuando se unen para un bien común. A lo largo de mi camino como emprendedora, he descubierto que el verdadero crecimiento no solo nace del esfuerzo individual, sino de la tribu con la que caminamos. Por eso, he creado un espacio donde las mujeres puedan inspirarse, aprender, compartir y construir juntas."
                     </p>
                 </div>
@@ -46,7 +46,7 @@ export default function ComunidadPage() {
                         <div>
                             <span className="text-sm tracking-[0.2em] text-gray-500 uppercase block mb-4">MI Misión</span>
                             <h2 className="font-serif text-3xl md:text-4xl mb-6">Unidas somos más fuertes</h2>
-                            <div className="prose prose-lg text-gray-600 space-y-4">
+                            <div className="prose prose-xl text-gray-600 space-y-4">
                                 <p>
                                     Mi misión es acompañar a más mujeres a descubrir su fuerza, su voz y su capacidad de crear oportunidades. A través de mentorías, consejos prácticos y espacios de diálogo, comparto mi experiencia como madre, empresaria y mujer resiliente para impulsar su desarrollo personal y profesional.
                                 </p>
@@ -74,7 +74,7 @@ export default function ComunidadPage() {
             <section className="container mx-auto px-4 py-20">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="font-dancing text-4xl md:text-5xl mb-12">Eventos y encuentros de networking</h2>
-                    <p className="text-lg text-gray-600 mb-12">
+                    <p className="text-xl text-gray-600 mb-12">
                         A lo largo del año organizo encuentros presenciales y virtuales, diseñados para conectar a mujeres emprendedoras, profesionales y líderes que desean expandir su red y aprender unas de otras.
                     </p>
 
@@ -95,8 +95,7 @@ export default function ComunidadPage() {
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                     </div>
-                                    <h3 className="font-serif text-lg md:text-xl mb-1 text-gray-800">{item.title}</h3>
-                                    <p className="text-gray-600 font-light text-xs md:text-sm">{item.desc}</p>
+                                    <p className="text-gray-600 font-light text-sm md:text-base text-center mt-2">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -112,7 +111,7 @@ export default function ComunidadPage() {
                 <div className="container mx-auto px-4 text-center">
                     <span className="block text-sm tracking-[0.2em] uppercase mb-4 opacity-80">Forma parte</span>
                     <h2 className="font-dancing text-4xl md:text-6xl mb-8">Únete a mi comunidad</h2>
-                    <p className="text-xl max-w-2xl mx-auto mb-12 opacity-90 font-light">
+                    <p className="text-2xl max-w-2xl mx-auto mb-12 opacity-90 font-light">
                         Si buscas un espacio donde sentirte acompañada, conectada y motivada a crecer, este lugar es para ti.
                         Te invito a formar parte de una comunidad que cree en el trabajo constante, en la disciplina, en el bienestar y en la fuerza femenina.
                     </p>

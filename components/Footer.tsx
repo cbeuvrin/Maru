@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Facebook, Instagram } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -12,6 +13,15 @@ export default function Footer() {
                     <Link href="#">Comunidad</Link>
                     <Link href="#">Blog - Q&A</Link>
                     <Link href="#">Contacto</Link>
+                </div>
+
+                <div className="flex justify-center gap-6 mb-8">
+                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--accent-brown)] transition-colors">
+                        <Facebook size={20} />
+                    </a>
+                    <a href="https://www.instagram.com/marucorderovieyra/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--accent-brown)] transition-colors">
+                        <Instagram size={20} />
+                    </a>
                 </div>
 
                 <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">

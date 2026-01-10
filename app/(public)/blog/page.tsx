@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function BlogPage() {
     const faqs = [
         {
-            question: "¿Cómo puedo contactarte si tengo más dudas?",
-            answer: "Comunícate conmigo al proyectosnetworkmkt@gmail.com si no puedes encontrar una respuesta a tu pregunta. Puedes contactarme directamente a través del formulario, WhatsApp o redes sociales. Te ayudo a elegir los productos ideales y te guío durante todo el proceso para que inicies tu rutina con confianza."
+            question: "¿Cómo puedo comprar productos RIMAN a través de Maru?",
+            answer: "Puedes contactarme directamente a través del formulario, WhatsApp o redes sociales. Te ayudo a elegir los productos ideales y te guío durante todo el proceso para que inicies tu rutina con confianza."
         },
         {
             question: "¿Es posible generar ingresos con RIMAN?",
@@ -126,7 +126,7 @@ export default function BlogPage() {
                                     src="/blog/post-3.jpg"
                                     alt="Ingresos desde casa"
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                 />
                             </Link>
                             <div className="p-6 flex flex-col flex-grow text-center">
@@ -149,7 +149,7 @@ export default function BlogPage() {
                                     src="/blog/post-4.jpg"
                                     alt="Vida con propósito"
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105"
                                 />
                             </Link>
                             <div className="p-6 flex flex-col flex-grow text-center">

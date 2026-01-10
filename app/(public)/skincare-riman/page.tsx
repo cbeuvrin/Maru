@@ -47,15 +47,15 @@ export default function SkincarePage() {
             {/* Sticky Navigation Menu */}
             <div className="sticky top-[75px] md:top-[90px] z-40 bg-white border-b border-gray-200 py-4 md:py-6 mb-16 shadow-sm">
                 <div className="container mx-auto px-4 text-center">
-                    <span className="inline-block border border-gray-800 px-6 py-2 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span className="inline-block border border-gray-800 px-6 py-2 text-base font-bold uppercase tracking-widest mb-4">
                         Elige tu rutina RIMAN
                     </span>
                     <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                        <a href="#basica" className="text-xs font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Básica</a>
-                        <a href="#hidratacion" className="text-xs font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Hidratación</a>
-                        <a href="#antimanchas" className="text-xs font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Antimanchas</a>
-                        <a href="#anti-age" className="text-xs font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Anti-Age</a>
-                        <a href="#grasa" className="text-xs font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Piel Grasa</a>
+                        <a href="#basica" className="text-sm font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Básica</a>
+                        <a href="#hidratacion" className="text-sm font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Hidratación</a>
+                        <a href="#antimanchas" className="text-sm font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Antimanchas</a>
+                        <a href="#anti-age" className="text-sm font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Anti-Age</a>
+                        <a href="#grasa" className="text-sm font-bold uppercase tracking-widest hover:text-[var(--accent-brown)] transition-colors">Piel Grasa</a>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@ export default function SkincarePage() {
                                 src="/skincare/trust-maru.jpg"
                                 alt="Por qué confío"
                                 fill
-                                className="object-cover"
+                                className="object-cover object-[center_15%]"
                             />
                         </div>
                     </div>

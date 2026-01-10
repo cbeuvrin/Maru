@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
 
 const CAROUSEL_IMAGES = [
     "/carousel/image1.jpg",
@@ -12,78 +9,35 @@ const CAROUSEL_IMAGES = [
 ];
 
 export default function LifeInMotion() {
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [isPaused, setIsPaused] = useState(false);
-
-    const scroll = (direction: "left" | "right") => {
-        if (scrollRef.current) {
-            const { current } = scrollRef;
-            // Calculate item width + gap (gap-6 = 24px)
-            const itemWidth = (current.children[0] as HTMLElement).clientWidth + 24;
-
-            if (direction === "left") {
-                current.scrollBy({ left: -itemWidth, behavior: "smooth" });
-            } else {
-                current.scrollBy({ left: itemWidth, behavior: "smooth" });
-            }
-        }
-    };
-
-    // Update active index on scroll
-    useEffect(() => {
-        const handleScroll = () => {
-            if (scrollRef.current) {
-                const { scrollLeft, clientWidth } = scrollRef.current;
-                const index = Math.round(scrollLeft / (clientWidth * 0.8)); // Approximate
-                // This is a rough approximation for dots, exact intersection observer is better but this is simple enough for now
-            }
-        };
-
-        const currentScrollRef = scrollRef.current; // Store ref in a variable for cleanup
-        currentScrollRef?.addEventListener("scroll", handleScroll);
-        return () => currentScrollRef?.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    // Auto-scroll functionality
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (!isPaused && scrollRef.current) {
-                const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-                // Check if we've reached the end (with a small buffer)
-                if (scrollLeft + clientWidth >= scrollWidth - 10) {
-                    scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-                } else {
-                    scroll("right");
-                }
-            }
-        }, 4500); // Scroll every 4.5 seconds
-
-        return () => clearInterval(interval);
-    }, [isPaused]);
-
     return (
         <section className="bg-[var(--primary-beige)] py-20 text-center overflow-hidden">
-            <div className="container mx-auto px-4">
+            <div className="w-full">
                 <h2 className="font-dancing text-4xl md:text-5xl mb-8">
                     Mi vida en movimiento
                 </h2>
 
-                <div
-                    className="relative group max-w-7xl mx-auto"
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
-                >
+                <div className="relative w-full overflow-hidden group">
                     {/* Carousel Container */}
-                    <div
-                        ref={scrollRef}
-                        className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
+                    <div className="flex gap-6 w-[200%] animate-marquee group-hover:[animation-play-state:paused]">
+                        {/* First set of images */}
                         {CAROUSEL_IMAGES.map((src, index) => (
                             <div
-                                key={index}
-                                className="flex-shrink-0 w-[85%] md:w-[45%] lg:w-[30%] h-[400px] relative snap-center rounded-2xl overflow-hidden shadow-xl"
+                                key={`set1-${index}`}
+                                className="flex-shrink-0 w-[300px] md:w-[400px] aspect-[3/4] relative rounded-2xl overflow-hidden shadow-xl"
+                            >
+                                <Image
+                                    src={src}
+                                    alt={`Life in Motion ${index + 1}`}
+                                    fill
+                                    className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                                />
+                            </div>
+                        ))}
+                        {/* Second set of images for seamless loop */}
+                        {CAROUSEL_IMAGES.map((src, index) => (
+                            <div
+                                key={`set2-${index}`}
+                                className="flex-shrink-0 w-[300px] md:w-[400px] aspect-[3/4] relative rounded-2xl overflow-hidden shadow-xl"
                             >
                                 <Image
                                     src={src}
@@ -95,28 +49,12 @@ export default function LifeInMotion() {
                         ))}
                     </div>
 
-                    {/* Navigation Buttons */}
-                    <button
-                        onClick={() => scroll("left")}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-3 rounded-full hover:bg-white shadow-lg transition-all z-10"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                        </svg>
-                    </button>
-                    <button
-                        onClick={() => scroll("right")}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-3 rounded-full hover:bg-white shadow-lg transition-all z-10"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                        </svg>
-                    </button>
+                    {/* Gradient Overlays for smooth edges */}
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--primary-beige)] to-transparent z-10"></div>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--primary-beige)] to-transparent z-10"></div>
                 </div>
 
-                <p className="text-sm uppercase tracking-widest mt-8 opacity-60">
-                    Desliza para ver más
-                </p>
+
             </div>
         </section>
     );
