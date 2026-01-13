@@ -16,7 +16,7 @@ export default function Footer() {
                 </div>
 
                 <div className="flex justify-center gap-6 mb-8">
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--accent-brown)] transition-colors">
+                    <a href="https://www.facebook.com/share/14RwayTZXcM/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--accent-brown)] transition-colors">
                         <Facebook size={20} />
                     </a>
                     <a href="https://www.instagram.com/marucorderovieyra/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--accent-brown)] transition-colors">

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -68,6 +68,15 @@ export default function Navbar() {
                             />
                         </div>
                     </Link>
+                    <a
+                        href="https://www.facebook.com/share/14RwayTZXcM/?mibextid=wwXIfr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`transition-colors duration-300 ${isLightMode ? "text-black hover:text-[var(--accent-brown)]" : "text-white/90 hover:text-white"}`}
+                        aria-label="Facebook"
+                    >
+                        <Facebook className="w-5 h-5 md:w-6 md:h-6" />
+                    </a>
                     <a
                         href="https://www.instagram.com/marucorderovieyra/"
                         target="_blank"

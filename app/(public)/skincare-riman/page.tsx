@@ -45,7 +45,7 @@ export default function SkincarePage() {
             </section>
 
             {/* Sticky Navigation Menu */}
-            <div className="sticky top-[75px] md:top-[90px] z-40 bg-white border-b border-gray-200 py-4 md:py-6 mb-16 shadow-sm">
+            <div className="bg-white border-b border-gray-200 py-4 md:py-6 mb-16 shadow-sm">
                 <div className="container mx-auto px-4 text-center">
                     <span className="inline-block border border-gray-800 px-8 py-3 text-xl md:text-2xl font-bold uppercase tracking-widest mb-6">
                         Elige tu rutina RIMAN
