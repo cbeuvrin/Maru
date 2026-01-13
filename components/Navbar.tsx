@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Instagram } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -55,7 +56,7 @@ export default function Navbar() {
             <div className="w-full px-4 md:px-8 flex flex-row items-center justify-between">
 
                 {/* Logo Section (Left) */}
-                <div className="p-2 transition-all duration-300 relative z-50">
+                <div className="flex items-center gap-3 p-2 transition-all duration-300 relative z-50">
                     <Link href="/">
                         <div className="relative w-[150px] md:w-[200px] h-[40px] md:h-[60px] flex items-center justify-start">
                             <Image
@@ -67,6 +68,15 @@ export default function Navbar() {
                             />
                         </div>
                     </Link>
+                    <a
+                        href="https://www.instagram.com/marucorderovieyra/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`transition-colors duration-300 ${isLightMode ? "text-black hover:text-[var(--accent-brown)]" : "text-white/90 hover:text-white"}`}
+                        aria-label="Instagram"
+                    >
+                        <Instagram className="w-5 h-5 md:w-6 md:h-6" />
+                    </a>
                 </div>
 
                 {/* Desktop Navigation (Right) */}

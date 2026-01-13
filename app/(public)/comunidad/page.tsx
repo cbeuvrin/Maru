@@ -95,7 +95,7 @@ export default function ComunidadPage() {
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                     </div>
-                                    <p className="text-gray-600 font-light text-sm md:text-base text-center mt-2">{item.desc}</p>
+                                    <p className="text-gray-600 font-bold text-sm md:text-base text-center mt-2">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
