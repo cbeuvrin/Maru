@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Dancing_Script, Quicksand } from "next/font/google";
 
 import { Providers } from "@/components/Providers";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const dancingScript = Dancing_Script({
@@ -71,6 +72,7 @@ export default function RootLayout({
       >
         <Providers>
           {children}
+          <WhatsAppButton />
         </Providers>
       </body>
     </html>
