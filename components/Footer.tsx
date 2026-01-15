@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -22,6 +22,9 @@ export default function Footer() {
                     <a href="https://www.instagram.com/marucorderovieyra/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--accent-brown)] transition-colors">
                         <Instagram size={20} />
                     </a>
+                    <a href="https://wa.me/525554309383" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--accent-brown)] transition-colors">
+                        <MessageCircle size={20} />
+                    </a>
                 </div>
 
                 <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">
@@ -37,6 +40,6 @@ export default function Footer() {
                     </Link>
                 </div>
             </div>
-        </footer>
+        </footer >
     );
 }

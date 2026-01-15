@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -85,6 +85,15 @@ export default function Navbar() {
                         aria-label="Instagram"
                     >
                         <Instagram className="w-5 h-5 md:w-6 md:h-6" />
+                    </a>
+                    <a
+                        href="https://wa.me/525554309383"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`transition-colors duration-300 ${isLightMode ? "text-black hover:text-[var(--accent-brown)]" : "text-white/90 hover:text-white"}`}
+                        aria-label="WhatsApp"
+                    >
+                        <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
                     </a>
                 </div>
 
