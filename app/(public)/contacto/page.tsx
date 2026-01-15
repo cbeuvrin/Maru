@@ -47,7 +47,7 @@ export default function ContactPage() {
 
                         <div>
                             <Link
-                                href="https://wa.me/15554309383" // Placeholder number from read_url_content (or generic)
+                                href="https://wa.me/525554309383"
                                 target="_blank"
                                 className="inline-flex items-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#128C7E] transition-colors shadow-lg"
                             >
